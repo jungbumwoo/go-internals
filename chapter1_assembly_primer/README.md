@@ -76,8 +76,8 @@ $ GOOS=linux GOARCH=amd64 go tool compile -S direct_topfunc_call.go
 0x0000 TEXT		"".main(SB), $24-0
   ;; ...omitted stack-split prologue...
   0x000f SUBQ		$24, SP
-  0x0013 MOVQ		BP, 16(SP)
-  0x0018 LEAQ		16(SP), BP
+  0x0013 MOVQ		BP, 16(SP) ;현재 프레임 포인터(BP) 값을 16(SP) 에 저장해둠 
+  0x0018 LEAQ		16(SP), BP ;새로운 프레임 포인터의 주소를 계산하고 BP에 저장
   0x001d FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
   0x001d FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
   0x001d MOVQ		$137438953482, AX
